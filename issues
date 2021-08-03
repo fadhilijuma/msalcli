@@ -1,0 +1,39 @@
+1. AcquireTokenDeviceCodeParameters
+func (r *TenantDiscoveryResponse) Validate()
+
+errors.Wrap
+
+	err := c.Comm.URLFormCall(ctx, endpoint, qv, &resp) has values
+
+	VerificationURl under AdditionalFields
+
+
+	// Convert converts the DeviceCodeResponse to a DeviceCodeResult
+    func (dcr DeviceCodeResponse) Convert(clientID string, scopes []string) DeviceCodeResult {
+    	expiresOn := time.Now().UTC().Add(time.Duration(dcr.ExpiresIn) * time.Second)
+    	return NewDeviceCodeResult(dcr.UserCode, dcr.DeviceCode, dcr.VerificationURL, expiresOn, dcr.Interval, dcr.Message, clientID, scopes)
+    }
+
+    	UserCode        string `json:"user_code"`
+    	DeviceCode      string `json:"device_code"`
+    	VerificationURL string `json:"verification_url"`
+    	ExpiresIn       int    `json:"expires_in"`
+    	Interval        int    `json:"interval"`
+    	Message         string `json:"message"`
+
+    	// Convert converts the DeviceCodeResponse to a DeviceCodeResult
+        func (dcr DeviceCodeResponse) Convert(clientID string, scopes []string) DeviceCodeResult {
+        	expiresOn := time.Now().UTC().Add(time.Duration(dcr.ExpiresIn) * time.Second)
+        	m := dcr.AdditionalFields
+        	verificationUri := fmt.Sprintf("%s", m["verification_uri"])
+        	return NewDeviceCodeResult(dcr.UserCode, dcr.DeviceCode, verificationUri, expiresOn, dcr.Interval, dcr.Message, clientID, scopes)
+        }
+
+
+
+        At BBC, I worked on a system that ingests images from image vendors contracted by BBC e.g Getty, AFP and Reuters. This image repository stores all images that are used by on all BBC platforms, including BBC TV and BBC online. If any news editor wants to do a story about a certain topic, they go and search for an appropriate image from the Grid and use it. This tool is built using Java and Scala and its fully deployed on Amazon.
+
+        I added an authorization and Authentication microservice using Oath2 and OpenID Connect to the system enabling secure access to resources.
+        Initially, images were retrieved directly from S3 buckets. This proved slow and expensive retrieving images. I introduced an image caching module with Elasticsearch and this managed to greatly increase image retrieval speeds.
+        I created an automation and deployment CLI tool for managing the application deployment processes.
+        I worked on integrating the Grid with Amazon Kinesis. All ingested images from all vendors were written on a Kinesis topi
